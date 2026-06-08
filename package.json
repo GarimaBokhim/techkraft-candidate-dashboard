@@ -2,7 +2,7 @@
   "name": "techkraft-candidate-dashboard",
   "private": true,
   "scripts": {
-    "web": "pnpm --dir web dev",
-    "web-build": "pnpm --dir web build"
+    "web:dev": "pnpm --filter @techkraft-candidate-dashboard/web dev",
+    "web:build": "pnpm --filter @techkraft-candidate-dashboard/web build"
   }
 }
