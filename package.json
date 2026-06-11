@@ -2,7 +2,8 @@
   "name": "techkraft-candidate-dashboard",
   "private": true,
   "scripts": {
-    "web:dev": "pnpm --filter @techkraft-candidate-dashboard/web dev",
-    "web:build": "pnpm --filter @techkraft-candidate-dashboard/web build"
+    "web:dev": "pnpm --filter frontend dev",
+    "web:build": "pnpm --filter frontend build",
+    "server:start": "cd apps/server && venv/bin/python -m uvicorn app.main:app --reload"
   }
 }
