@@ -62,7 +62,16 @@ curl -X 'GET' \
 ```
 
 ---
+## Demo Credentials
 
+A default admin account is seeded automatically when the application starts.
+
+| Role     | Email                  | Password   |
+|----------|------------------------|------------|
+| Admin    | admin@techkraft.com    | admin123   |
+| Reviewer | reviewer@techkraft.com   | Reviewer123|
+
+New reviewer accounts can also be registered via the `/auth/register` endpoint.
 ## Architecture Decision Record (ADR)
 
 ### 1. Centralized Axios Instance with Interceptor for Auth
