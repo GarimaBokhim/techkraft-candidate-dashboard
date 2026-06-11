@@ -19,6 +19,6 @@ with Session(engine) as session:
         )
         session.add(admin)
         session.commit()
-        print("Admin created: admin@techkraft.com / Admin123")
+        print("Admin created: admin@techkraft.com / admin123")
     else:
         print("Admin already exists")

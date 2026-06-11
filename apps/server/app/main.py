@@ -16,7 +16,7 @@ app.add_middleware(
 
 
 def init_db():
-    import app.models  # ensures models are registered
+    import app.models
 
     SQLModel.metadata.create_all(engine)
 

@@ -178,7 +178,7 @@ async def generate_summary(
         "candidate_id": candidate_id,
         "summary": (
             f"{candidate.name} is applying for {candidate.role_applied}. "
-            f"They have skills in {candidate.skills}. "
+            f"They have skills in {', '.join(candidate.skills)}. "
             "This is a mock AI-generated summary."
         ),
     }

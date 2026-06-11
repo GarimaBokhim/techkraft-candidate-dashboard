@@ -79,24 +79,3 @@ class CandidateDetailOut(CandidateOut):
 
 class InternalNotesUpdate(BaseModel):
     internal_notes: str
-
-
-# class UserRole(str, Enum):
-#     admin = "admin"
-#     reviewer = "reviewer"
-
-
-# class UserCreate(BaseModel):
-#     fullName: str
-#     email: str
-#     username: str
-#     role: UserRole
-
-
-# class User(SQLModel, table=True):
-#     id: str = Field(primary_key=True)
-#     full_name: str
-#     email: str
-#     username: str
-#     hashed_password: str
-#     role: UserRole

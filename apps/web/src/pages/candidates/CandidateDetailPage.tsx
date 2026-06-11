@@ -5,10 +5,10 @@ import {
   useCandidate,
   useSubmitScore,
   useGenerateSummary,
-  useUpdateInternalNotes,
 } from "../../api/candidates";
 import { useAuth } from "../../lib/auth-context";
 import { toast } from "sonner";
+import CandidateInternalNote from "./CandidateInternalNote";
 
 export default function CandidateDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -17,14 +17,11 @@ export default function CandidateDetailPage() {
   const { data: candidate, isLoading, isError } = useCandidate(id!);
   const submitScore = useSubmitScore(id!);
   const generateSummary = useGenerateSummary(id!);
-  const updateNotes = useUpdateInternalNotes(id!);
 
   const [category, setCategory] = useState("Technical");
   const [score, setScore] = useState("3");
   const [note, setNote] = useState("");
-
   const [summary, setSummary] = useState<string | null>(null);
-  const [internalNote, setInternalNote] = useState("");
 
   if (isLoading)
     return (
@@ -65,16 +62,6 @@ export default function CandidateDetailPage() {
         toast.error("Failed to generate summary");
       },
     });
-  };
-
-  const handleSaveNotes = () => {
-    updateNotes.mutate(
-      { internal_notes: internalNote },
-      {
-        onSuccess: () => toast.success("Internal notes updated"),
-        onError: () => toast.error("Failed to update notes"),
-      },
-    );
   };
 
   const visibleScores = candidate.scores;
@@ -281,26 +268,8 @@ export default function CandidateDetailPage() {
                   </button>
                 </form>
               </div>
-              {role === "admin" && (
-                <div className="bg-yellow-50 p-6 rounded-2xl border">
-                  <h3 className="font-semibold text-yellow-900 mb-2">
-                    Internal Notes
-                  </h3>
-
-                  <textarea
-                    value={internalNote}
-                    onChange={(e) => setInternalNote(e.target.value)}
-                    rows={4}
-                    className="w-full p-2 border rounded-xl bg-white"
-                  />
-
-                  <button
-                    onClick={handleSaveNotes}
-                    className="mt-3 bg-yellow-600 text-white px-4 py-2 rounded-xl"
-                  >
-                    Save Notes
-                  </button>
-                </div>
+              {role === "admin" && candidate && (
+                <CandidateInternalNote candidate={candidate} />
               )}
             </div>
           </div>

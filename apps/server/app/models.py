@@ -21,9 +21,6 @@ class CandidateStatus(str, Enum):
     archived = "archived"
 
 
-# ── User ──────────────────────────────────────────────────────────────────────
-
-
 class User(SQLModel, table=True):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()), primary_key=True)
     full_name: str
@@ -31,9 +28,6 @@ class User(SQLModel, table=True):
     username: str = Field(index=True, unique=True)
     hashed_password: str
     role: UserRole = Field(default=UserRole.reviewer)  # role is NEVER from client
-
-
-# ── Candidate ─────────────────────────────────────────────────────────────────
 
 
 class Candidate(SQLModel, table=True):
@@ -46,9 +40,6 @@ class Candidate(SQLModel, table=True):
     internal_notes: Optional[str] = None  # admin-only
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     deleted_at: Optional[datetime] = None
-
-
-# ── Score ─────────────────────────────────────────────────────────────────────
 
 
 class Score(SQLModel, table=True):
